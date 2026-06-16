@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Allan Altarugio logo">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="52" x2="442" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#24142d"/>
+      <stop offset="1" stop-color="#0f1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="74" y1="60" x2="438" y2="452" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff3868"/>
+      <stop offset="1" stop-color="#9d174d"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <rect x="42" y="42" width="428" height="428" rx="88" fill="none" stroke="url(#accent)" stroke-width="28"/>
+  <text x="256" y="286" text-anchor="middle" dominant-baseline="middle" font-family="Consolas, 'Cascadia Mono', 'SFMono-Regular', monospace" font-size="112" font-weight="800" letter-spacing="0" fill="#f8fafc">&lt;/AA&gt;</text>
+  <rect x="122" y="330" width="268" height="14" rx="7" fill="url(#accent)"/>
+</svg>

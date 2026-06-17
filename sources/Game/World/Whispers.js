@@ -303,6 +303,26 @@ export class Whispers
         {
             const sanatized = sanatize(this.menu.input.value, true, true, true)
             
+            if(!sanatized.length)
+                return
+
+            if(!this.game.server.connected)
+            {
+                this.game.notifications.show(
+                    /* html */`
+                        <div class="top">
+                            <div class="title">Server offline</div>
+                            <div class="text">Whisper couldn't be saved</div>
+                        </div>
+                    `,
+                    'server-disconnected',
+                    5,
+                    null,
+                    'server-disconnected'
+                )
+                return
+            }
+            
             if(sanatized.length && this.game.server.connected)
             {
                 // Insert

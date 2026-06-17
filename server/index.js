@@ -301,7 +301,7 @@ export default {
 
         if(url.pathname === '/ws')
         {
-            const id = env.PORTFOLIO_ROOM.idFromName('production')
+            const id = env.PORTFOLIO_ROOM.idFromName('production-v2')
             return env.PORTFOLIO_ROOM.get(id).fetch(request)
         }
 

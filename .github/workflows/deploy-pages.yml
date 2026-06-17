@@ -32,6 +32,8 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build
+        env:
+          VITE_SERVER_URL: wss://allan-altarugio-portfolio-server.allanaltarugio.workers.dev/ws
         run: npm run build
 
       - name: Upload artifact

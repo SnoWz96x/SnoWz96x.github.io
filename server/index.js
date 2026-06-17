@@ -228,13 +228,21 @@ export class PortfolioRoom extends DurableObject
     async insertWhisper(data)
     {
         const message = sanitizeMessage(data.message)
+        const uuid = String(data.uuid ?? '')
 
         if(!message)
             return
 
         const whispers = await this.ctx.storage.get('whispers') ?? []
+        const deleted = []
+        const previousIndex = whispers.findIndex((item) => item.uuid === uuid && uuid)
+
+        if(previousIndex !== -1)
+            deleted.push(...whispers.splice(previousIndex, 1))
+
         const whisper = {
             id: `${Date.now()}-${crypto.randomUUID()}`,
+            uuid,
             message,
             countrycode: sanitizeCountryCode(data.countryCode),
             x: sanitizeNumber(data.x),
@@ -243,7 +251,7 @@ export class PortfolioRoom extends DurableObject
         }
 
         whispers.push(whisper)
-        const deleted = whispers.splice(0, Math.max(0, whispers.length - MAX_WHISPERS))
+        deleted.push(...whispers.splice(0, Math.max(0, whispers.length - MAX_WHISPERS)))
 
         await this.ctx.storage.put('whispers', whispers)
 
@@ -293,7 +301,7 @@ export default {
 
         if(url.pathname === '/ws')
         {
-            const id = env.PORTFOLIO_ROOM.idFromName('global')
+            const id = env.PORTFOLIO_ROOM.idFromName('production')
             return env.PORTFOLIO_ROOM.get(id).fetch(request)
         }
 

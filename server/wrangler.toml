@@ -1,0 +1,11 @@
+name = "allan-altarugio-portfolio-server"
+main = "index.js"
+compatibility_date = "2026-06-16"
+
+[[durable_objects.bindings]]
+name = "PORTFOLIO_ROOM"
+class_name = "PortfolioRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = [ "PortfolioRoom" ]
